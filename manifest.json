@@ -1,0 +1,7 @@
+{
+  "name": "ScrollToBottom",
+  "version": "1.0.0",
+  "description": "Agrega un botón flotante para bajar al último mensaje",
+  "main": "index.js",
+  "style": "style.css"
+}
