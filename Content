@@ -1,0 +1,43 @@
+export default {
+    name: "ScrollToBottomButton",
+    author: "ChatGPT",
+    version: "1.0",
+    description: "Agrega un botón flotante para bajar hasta el último mensaje del chat.",
+
+    async onEnable() {
+        const boton = document.createElement('button');
+        boton.innerText = '⬇️';
+        boton.id = 'scrollToBottomBtn';
+        boton.style.position = 'fixed';
+        boton.style.bottom = '20px';
+        boton.style.right = '20px';
+        boton.style.width = '60px';
+        boton.style.height = '60px';
+        boton.style.zIndex = '9999';
+        boton.style.background = '#333';
+        boton.style.color = '#fff';
+        boton.style.border = 'none';
+        boton.style.borderRadius = '50%';
+        boton.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+        boton.style.fontSize = '24px';
+        boton.style.cursor = 'pointer';
+
+        boton.onclick = () => {
+            const chat = document.querySelector('.mes_wrap') || document.querySelector('.chat-scroll') || document.querySelector('#chat');
+            if (chat) {
+                chat.scrollTo({ top: chat.scrollHeight, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        };
+
+        document.body.appendChild(boton);
+    },
+
+    async onDisable() {
+        const boton = document.getElementById('scrollToBottomBtn');
+        if (boton) {
+            boton.remove();
+        }
+    }
+};
